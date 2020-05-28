@@ -98,7 +98,7 @@ $UpdateName = New-Object psobject -Property @{
 UpdateName = ''
 }
 # Get the CM SQL Server
-$Global:ServerName = (Get-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\SMS\SQL Server').Server
+$Global:ServerName = (Get-WmiObject -Class "SMS_SCI_SiteDefinition" -ComputerName $env:COMPUTERNAME -Namespace $namespace | Where-Object {$_.SiteCode -eq $SiteCode}).SQLServerName.ToString()
 #-----------------------------------------------------------[Functions]------------------------------------------------------------
 # List the Software Update Groups
 function Get-SUGList {
@@ -149,7 +149,6 @@ $listBox.Anchor = ([System.Windows.Forms.AnchorStyles][System.Windows.Forms.Anch
 $listBox.Location = New-Object System.Drawing.Point(10,30)
 $listBox.Size = New-Object System.Drawing.Size(325,20)
 $listBox.Height = 133
-
 
 # Retrieve a list of all SUG's
 $Global:ListOfSUGs = (Get-WmiObject -Class "SMS_AuthorizationList" -ComputerName $env:COMPUTERNAME -Namespace $namespace | Select-Object -Property LocalizedDisplayName | Sort-Object -Property LocalizedDisplayName).LocalizedDisplayname
