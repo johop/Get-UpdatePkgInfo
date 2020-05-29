@@ -113,7 +113,6 @@ $form.Size = New-Object System.Drawing.Size(360,240)
 $form.StartPosition = 'CenterScreen'
 $form.AutoSizeMode = [System.Windows.Forms.AutoSizeMode]::GrowAndShrink
 $form.MinimumSize = (New-Object -TypeName System.Drawing.Size -ArgumentList @([System.Int32]360,[System.Int32]240))
-$form.Icon = ([System.Drawing.Icon]"C:\Users\da-admin\Documents\PowerShell\Get-UpdatePackage\JohopIcon2.ico")
 
 $okButton = New-Object System.Windows.Forms.Button
 $okButton.Anchor = ([System.Windows.Forms.AnchorStyles][System.Windows.Forms.AnchorStyles]::Bottom -bor [System.Windows.Forms.AnchorStyles]::Right)
